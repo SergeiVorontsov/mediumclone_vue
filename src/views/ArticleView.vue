@@ -44,7 +44,7 @@
           <div>
             <p>{{ article.body }}</p>
           </div>
-          TAG LIST IS HERE
+          <app-tag-list :tags="article.tagList"/>
         </div>
       </div>
     </div>
@@ -57,6 +57,7 @@ import {mapGetters, mapState} from "vuex";
 import AppLoading from "@/components/Loading";
 import AppErrorMessage from "@/components/ErrorMessage";
 import {getterTypes as authGetterTypes} from "@/store/modules/auth";
+import AppTagList from "@/components/TagList";
 
 export default {
   name: "AppArticleView",
@@ -81,7 +82,8 @@ export default {
   },
   components: {
     AppLoading,
-    AppErrorMessage
+    AppErrorMessage,
+    AppTagList
   },
   mounted() {
     console.log(this.$route)

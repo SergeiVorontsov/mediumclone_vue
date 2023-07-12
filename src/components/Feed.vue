@@ -25,7 +25,7 @@
           <h1>{{ article.title }}</h1>
           <p>{{ article.description }}</p>
           <span>Read more...</span>
-          TAG LIST
+          <app-tag-list :tags="article.tagList"/>
         </router-link>
       </div>
       <app-pagination
@@ -46,6 +46,7 @@ import {limit} from "@/helpers/vars";
 import queryString from 'query-string';
 import AppLoading from '@/components/Loading'
 import AppErrorMessage from '@/components/ErrorMessage'
+import AppTagList from '@/components/TagList'
 
 
 export default {
@@ -59,7 +60,8 @@ export default {
   components: {
     AppPagination,
     AppLoading,
-    AppErrorMessage
+    AppErrorMessage,
+    AppTagList
   },
   data() {
     return {
@@ -77,10 +79,10 @@ export default {
     currentPage() {
       return Number(this.$route.query.page || '1')
     },
-    baseUrl(){
+    baseUrl() {
       return this.$route.path
     },
-    offset () {
+    offset() {
       return this.currentPage * limit - limit
     }
   },
@@ -102,7 +104,7 @@ export default {
         offset: this.offset,
         ...parsedUrl.query
       })
-      const  apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+      const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
       console.log(apiUrlWithParams)
       this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
     }
