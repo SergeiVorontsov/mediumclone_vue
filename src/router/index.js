@@ -5,6 +5,7 @@ import LoginView from "@/views/LoginView";
 import YourFeedView from "@/views/YourFeedView";
 import TagFeedView from "@/views/TagFeedView";
 import ArticleView from "@/views/ArticleView";
+import CreateArticle from "@/views/CreateArticle";
 
 const routes = [
 
@@ -36,7 +37,7 @@ const routes = [
   {
     path: '/articles/new',
     name: 'createArticle',
-    component: GlobalFeedView
+    component: CreateArticle
   },
   {
     path: '/articles/:slug',

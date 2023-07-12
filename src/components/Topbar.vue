@@ -18,7 +18,7 @@
           <li class="nav-item">
             <router-link
                 class="nav-link"
-                to="{name: 'createArticle'}"
+                :to="{name: 'createArticle'}"
                 active-class="active"
             >
               <i class="ion-compose"></i> &nbsp; New Article
@@ -27,7 +27,7 @@
           <li class="nav-item">
             <router-link
                 class="nav-link"
-                to="{name: 'settings'}"
+                :to="{name: 'settings'}"
                 active-class="active"
             >
               <i class="ion-gear-a"></i> &nbsp; Settings
@@ -36,7 +36,7 @@
           <li class="nav-item">
             <router-link
                 class="nav-link"
-                to="{name: 'userProfile', params: {slug: currentUser.username}}">
+                :to="{name: 'userProfile', params: {slug: currentUser.username}}">
               <img class="user-pic" :src="currentUser.image"/>
               &nbsp;
               {{ currentUser.username }}
