@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-
-    <div v-if="error">Something wrong</div>
+    <app-loading v-if="isLoading"/>
+    <app-error-message v-if="error"/>
 
     <div v-if="feed">
       <div
@@ -44,8 +43,10 @@ import {mapState} from "vuex";
 import {actionTypes} from "@/store/modules/feed";
 import AppPagination from '@/components/Pagination'
 import {limit} from "@/helpers/vars";
-import {stringify, parseUrl} from 'query-string';
-/*import queryString from 'query-string'*/
+import queryString from 'query-string';
+import AppLoading from '@/components/Loading'
+import AppErrorMessage from '@/components/ErrorMessage'
+
 
 export default {
   name: "AppFeed",
@@ -56,7 +57,9 @@ export default {
     }
   },
   components: {
-    AppPagination
+    AppPagination,
+    AppLoading,
+    AppErrorMessage
   },
   data() {
     return {
@@ -93,8 +96,8 @@ export default {
   },
   methods: {
     fetchFeed() {
-      const parsedUrl = /*queryString.*/parseUrl(this.apiUrl)
-      const stringifiedParams = /*queryString.*/stringify({
+      const parsedUrl = queryString.parseUrl(this.apiUrl)
+      const stringifiedParams = queryString.stringify({
         limit,
         offset: this.offset,
         ...parsedUrl.query
