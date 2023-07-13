@@ -6,6 +6,7 @@ import tags from "@/store/modules/tags";
 import article from "@/store/modules/article";
 import createArticle from "@/store/modules/createArticle";
 import editArticle from "@/store/modules/editArticle"
+import settings from "@/store/modules/settings"
 
 export default createStore({
   state: {
@@ -22,6 +23,8 @@ export default createStore({
     tags,
     article,
     createArticle,
-    editArticle
+    editArticle,
+    settings
+
   }
 })
