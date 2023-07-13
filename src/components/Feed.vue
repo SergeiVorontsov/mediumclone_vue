@@ -94,7 +94,9 @@ export default {
   },
   watch: {
     currentPage() {
-      console.log('current page change')
+      this.fetchFeed()
+    },
+    apiUrl() {
       this.fetchFeed()
     }
   },
